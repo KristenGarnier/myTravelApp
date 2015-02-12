@@ -10,3 +10,13 @@ form button {
 li.indicator-item.active {
     background-color: #f57c00 !important;
 }
+.background {
+    background-image: url('../img/test.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding : 3rem 0 4rem 0;
+}
+
+.collapsible-body{
+    background-color: white;
+}
