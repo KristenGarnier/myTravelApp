@@ -7,6 +7,6 @@ form button {
     margin-top: 0.5rem;
 }
 
-li.active {
+li.indicator-item.active {
     background-color: #f57c00 !important;
 }
