@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no"/>
+    <title>My travel</title>
+
+    <!-- CSS  -->
+    <link href="assets/css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+    <link href="assets/css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+</head>
+<body>
+<nav class="orange darken-2" role="navigation">
+    <div class="container">
+        <div class="nav-wrapper"><a id="logo-container" href="#" data-url="home" class="brand-logo">Logo</a>
+            <ul class="right">
+            </ul>
+            <ul id="nav-mobile" class="side-nav">
+                <li><a href="#" data-url="sejours">Séjours</a></li>
+                <li><a href="#" data-url="vols">Vols</a></li>
+                <li><a href="#" data-url="hotels">Hébergements</a></li>
+                <li><a href="#">Louer</a></li>
+                <li><a href="#">Dernière minute</a></li>
+                <li><a href="#">Bons plans</a></li>
+
+            </ul>
+            <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="mdi-navigation-menu"></i></a>
+        </div>
+    </div>
+</nav>
+<div id="render">
+
+</div>
+<!--  Scripts-->
+<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+<script src="assets/js/materialize.js"></script>
+<script src="assets/js/routing.js"></script>
+<script>
+    $(document).ready(function () {
+        $(".dropdown-button").dropdown({hover: false});
+        $(".button-collapse").sideNav({
+            closeOnClick: true
+        });
+    })
+</script>
+</body>
+</html>
