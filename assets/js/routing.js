@@ -14,7 +14,6 @@ function routingHandler(e) {
         $('.button-collapse').sideNav('hide');
     } else {
         $.getJSON( "http://kristengarnier.com/serveur/item.php", function( data ) {
-            console.log(data);
             var nom = data.title;
             var nom = '<h1>' + nom + '</h1>';
             var content = data.content;
