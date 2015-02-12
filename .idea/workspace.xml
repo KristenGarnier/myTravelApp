@@ -1,16 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="1ca62f3d-a5bb-4674-a929-b9d8be00a587" name="Default" comment="New version">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/views/article.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/hotels.html" afterPath="$PROJECT_DIR$/views/hotels.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index.html" afterPath="$PROJECT_DIR$/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/js/routing.js" afterPath="$PROJECT_DIR$/assets/js/routing.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/sejours.html" afterPath="$PROJECT_DIR$/views/sejours.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/css/style.css" afterPath="$PROJECT_DIR$/assets/css/style.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/vols.html" afterPath="$PROJECT_DIR$/views/vols.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-    </list>
+    <list default="true" id="1ca62f3d-a5bb-4674-a929-b9d8be00a587" name="Default" comment="New version" />
     <list id="2a3953c4-b7ea-4a06-8aca-88c72a4778e0" name="Rejected commit: Default" comment="New version" />
     <list id="60575df4-4322-418c-9790-8d1135f9493f" name="Rejected commit: Rejected commit: Default" comment="New version" />
     <ignored path="myTravelApp.iws" />
@@ -57,7 +48,7 @@
       <file leaf-file-name="article.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/views/article.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="1046" max-vertical-offset="2072">
+            <state vertical-scroll-proportion="0.0" vertical-offset="878" max-vertical-offset="1876">
               <caret line="50" column="144" selection-start-line="50" selection-start-column="144" selection-end-line="50" selection-end-column="144" />
               <folding />
             </state>
