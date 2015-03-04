@@ -1,5 +1,5 @@
 document.addEventListener("deviceReadu", init, false);
-//$(document).ready(init);
+$(document).ready(init);
 
 
 function init(){
@@ -187,32 +187,6 @@ function error(err) {
 function command(e) {
     e.preventDefault;
     toast('Votre voyage a été ajouté au panier !', 4000);
-}
-
-function checkConnection() {
-    console.log('test');
-    document.addEventListener("offline", onOffline, false);
-    document.addEventListener("online", onOnline, false);
-    /*var networkState = navigator.network.connection.type;
-
-    var states = {};
-    states[Connection.UNKNOWN]  = 'Unknown connection';
-    states[Connection.ETHERNET] = 'Ethernet connection';
-    states[Connection.WIFI]     = 'WiFi connection';
-    states[Connection.CELL_2G]  = 'Cell 2G connection';
-    states[Connection.CELL_3G]  = 'Cell 3G connection';
-    states[Connection.CELL_4G]  = 'Cell 4G connection';
-    states[Connection.NONE]     = 'No network connection';
-
-    console.log(states);*/
-}
-
-function onOffline(){
-    alert("You are offline!");
-}
-
-function onOnline(){
-    alert("You are online!");
 }
 
 function onBackKeyDown(){
