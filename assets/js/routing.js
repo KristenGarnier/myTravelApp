@@ -2,8 +2,8 @@ document.addEventListener("deviceready", init, false);
 document.addEventListener("offline", offlineHandler, false);
 document.addEventListener("online", onlineHandler, false);
 document.addEventListener("backbutton", onBackKeyDown, false);
-
-var isOnline;
+$(document).ready(init);
+var isOffline;
 
 function init() {
     routing();
@@ -27,7 +27,7 @@ function routingHandler(e) {
         $('.button-collapse').sideNav('hide');
     } else {
 
-        if (isOnline) {
+        if (!isOffline) {
             if (target == 'users') {
                 navigator.geolocation.getCurrentPosition(locInfo, error);
                 $.getJSON("http://local.dev/Api/users/?action=all", function (data) {
@@ -103,7 +103,7 @@ function inscriptionHandler(e) {
                 toast('Vous avez été enregistré avec success !', 4000, 'green-text');
 
                 //clear all fields
-                $('#contactForm').trigger("reset");
+                $('#ajouter').trigger("reset");
             },
             error: function () {
                 // Fail message
@@ -160,10 +160,10 @@ function modifyHandler(e) {
             success: function (data) {
                 // Success message
                 console.log(data);
-                //toast('Le profil a été modifié avec success !', 4000, 'green-text');
+                toast('Le profil a été modifié avec success !', 4000, 'green-text');
 
                 //clear all fields
-                $('#contactForm').trigger("reset");
+                $('#modification').trigger("reset");
             },
             error: function () {
                 // Fail message
@@ -176,12 +176,6 @@ function modifyHandler(e) {
 
 }
 
-function locInfo(pos) {
-    console.log(pos);
-}
-function error(err) {
-    console.warn('ERROR(' + err.code + '): ' + err.message);
-}
 
 function command(e) {
     e.preventDefault;
@@ -193,10 +187,11 @@ function onBackKeyDown() {
 }
 
 function onlineHandler() {
-    isOnline = true;
+    isOffline = true;
 }
 
 function offlineHandler() {
     toast('Attention, vous êtes actuellement hors ligne', 4000, 'red-text');
-    isOnline = false;
+    $('nav ul:gt(2)').hide();
+    isOffline = false;
 }
