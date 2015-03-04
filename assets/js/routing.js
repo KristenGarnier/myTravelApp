@@ -1,12 +1,11 @@
-document.addEventListener("deviceReadu", init, false);
+document.addEventListener("deviceReady", init, false);
 $(document).ready(init);
+
 
 
 function init(){
     routing();
     document.addEventListener("backbutton", onBackKeyDown, false);
-    isOffline = 'onLine' in navigator && !navigator.onLine;
-    $('#render').prepend(isOffline);
 }
 
 
@@ -20,6 +19,7 @@ function routing() {
 
 function routingHandler(e) {
     e.preventDefault;
+    var onlineStatus = checkInternet();
     var target = $(this).data("url");
     console.log(target);
     if (target != "users" && target != "read-user" && target != "deleteUser" ) {
@@ -27,7 +27,7 @@ function routingHandler(e) {
         $('.button-collapse').sideNav('hide');
     } else {
 
-        if (!isOffline) {
+        if (onlineStatus) {
             if (target == 'users') {
                 navigator.geolocation.getCurrentPosition(locInfo, error);
                 $.getJSON("http://local.dev/Api/users/?action=all", function (data) {
@@ -192,4 +192,28 @@ function command(e) {
 
 function onBackKeyDown(){
     $('#render').prepend("<p>Back</p>");
+}
+
+function checkInternet() {
+
+    var networkState = navigator.network.connection.type;
+    console.log(networkState);
+
+    if(networkState == Connection.NONE) {
+
+        onConnexionError();
+        return false;
+
+    } else {
+        onConnexionSucess();
+        return true;
+    }
+}
+
+function onConnexionError(){
+    toast('Attention, vous êtes actuellement hors ligne', 4000, 'red');
+}
+
+function onConnexionSucess(){
+    toast('Awesome, you are online !', 4000, 'green');
 }
