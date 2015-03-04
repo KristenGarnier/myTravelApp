@@ -1,9 +1,10 @@
 document.addEventListener("deviceReady", init, false);
-$(document).ready(init);
+document.addEventListener("offline", offlineHandler, false);
+document.addEventListener("online", onlineHandler, false);
 
+var isOnline;
 
-
-function init(){
+function init() {
     routing();
     document.addEventListener("backbutton", onBackKeyDown, false);
 }
@@ -12,22 +13,21 @@ function init(){
 function routing() {
     $('#render').load('views/home.html');
     $(document).on("click", "a", routingHandler);
-    $(document).on("click","#ajoutUtilisateur", inscriptionHandler);
-    $(document).on("click","#modifierUtilisateur", modifyHandler);
+    $(document).on("click", "#ajoutUtilisateur", inscriptionHandler);
+    $(document).on("click", "#modifierUtilisateur", modifyHandler);
     $(document).on("click", "a.command", command);
 }
 
 function routingHandler(e) {
     e.preventDefault;
-    var onlineStatus = checkInternet();
     var target = $(this).data("url");
     console.log(target);
-    if (target != "users" && target != "read-user" && target != "deleteUser" ) {
+    if (target != "users" && target != "read-user" && target != "deleteUser") {
         $("#render").load("views/" + target + '.html');
         $('.button-collapse').sideNav('hide');
     } else {
 
-        if (onlineStatus) {
+        if (isOnline) {
             if (target == 'users') {
                 navigator.geolocation.getCurrentPosition(locInfo, error);
                 $.getJSON("http://local.dev/Api/users/?action=all", function (data) {
@@ -64,91 +64,90 @@ function routingHandler(e) {
     }
 }
 
-function inscriptionHandler(e){
+function inscriptionHandler(e) {
     console.log('inscrit !');
     e.preventDefault();
     var nom = $("#ajouter #nom").val();
     var prenom = $("#ajouter #prenom").val();
     var MDP = $("#ajouter #password").val();
-    var adresse =$("#ajouter #adresse").val();
+    var adresse = $("#ajouter #adresse").val();
     var CP = $("#ajouter #CP").val();
     var ville = $("#ajouter #ville").val();
     var error = false;
 
 
-        if (nom == '' || prenom == '' || MDP == '' || adresse == '' || CP =='' || ville == '') {
-            console.log('toast');
-            toast('Veuillez remplir le formulaire en entier', 4000, 'red-text');
-            error = true;
+    if (nom == '' || prenom == '' || MDP == '' || adresse == '' || CP == '' || ville == '') {
+        console.log('toast');
+        toast('Veuillez remplir le formulaire en entier', 4000, 'red-text');
+        error = true;
 
-        }
+    }
 
-        if (error != true) {
-                console.log('test');
-                $.ajax({
-                    url: "http://local.dev/Api/users/",
-                    type: "GET",
-                    data: {
-                        action: 'create',
-                        nom: nom,
-                        prenom: prenom,
-                        MDP: MDP,
-                        adresse: adresse,
-                        CP: CP,
-                        ville: ville
-                    },
-                    cache: false,
-                    success: function () {
-                        // Success message
-                        toast('Vous avez été enregistré avec success !', 4000, 'green-text');
+    if (error != true) {
+        console.log('test');
+        $.ajax({
+            url: "http://local.dev/Api/users/",
+            type: "GET",
+            data: {
+                action: 'create',
+                nom: nom,
+                prenom: prenom,
+                MDP: MDP,
+                adresse: adresse,
+                CP: CP,
+                ville: ville
+            },
+            cache: false,
+            success: function () {
+                // Success message
+                toast('Vous avez été enregistré avec success !', 4000, 'green-text');
 
-                        //clear all fields
-                        $('#contactForm').trigger("reset");
-                    },
-                    error: function () {
-                        // Fail message
-                        toast('Vous n\'avez pas été enregistré, recommencez', 4000, 'orange-text');
-                    }
-                });
-
+                //clear all fields
+                $('#contactForm').trigger("reset");
+            },
+            error: function () {
+                // Fail message
+                toast('Vous n\'avez pas été enregistré, recommencez', 4000, 'orange-text');
             }
+        });
 
+    }
 
 
 }
-function modifyHandler(e){
+function modifyHandler(e) {
     console.log('coucou')
     e.preventDefault();
     var id = $(this).data('id');
     var nom = $("#modification #nom").val();
     var prenom = $("#modification #prenom").val();
     var MDP = $("#modification #password").val();
-    var adresse =$("#modification #adresse").val();
+    var adresse = $("#modification #adresse").val();
     var CP = $("#modification #CP").val();
     var ville = $("#modification #ville").val();
     var error = false;
     var data = {};
-    data.action = 'update' ;
-    data.id = "27" ;
+    data.action = 'update';
+    data.id = "27";
 
 
-    if(nom != ''){
-        data.nom= nom ;
+    if (nom != '') {
+        data.nom = nom;
     }
-    if(prenom != ''){
-        data.prenom=prenom;
+    if (prenom != '') {
+        data.prenom = prenom;
     }
-    if(MDP != ''){
-        data.MDP=MDP;
+    if (MDP != '') {
+        data.MDP = MDP;
     }
-    if(adresse != ''){
-        data.adresse=adresse;
+    if (adresse != '') {
+        data.adresse = adresse;
     }
-    if(CP != ''){
-        data.CP=CP;
+    if (CP != '') {
+        data.CP = CP;
     }
-    if(ville != ''){
-        data.ville=ville;
+    if (ville != '') {
+        data.ville = ville;
     }
 
     if (error != true) {
@@ -175,10 +174,9 @@ function modifyHandler(e){
     }
 
 
-
 }
 
-function locInfo(pos){
+function locInfo(pos) {
     console.log(pos);
 }
 function error(err) {
@@ -190,30 +188,15 @@ function command(e) {
     toast('Votre voyage a été ajouté au panier !', 4000);
 }
 
-function onBackKeyDown(){
+function onBackKeyDown() {
     $('#render').prepend("<p>Back</p>");
 }
 
-function checkInternet() {
-
-    var networkState = navigator.network.connection.type;
-    console.log(networkState);
-
-    if(networkState == Connection.NONE) {
-
-        onConnexionError();
-        return false;
-
-    } else {
-        onConnexionSucess();
-        return true;
-    }
+function onlineHandler() {
+    isOnline = true;
 }
 
-function onConnexionError(){
-    toast('Attention, vous êtes actuellement hors ligne', 4000, 'red');
-}
-
-function onConnexionSucess(){
-    toast('Awesome, you are online !', 4000, 'green');
+function offlineHandler() {
+    toast('Attention, vous êtes actuellement hors ligne', 4000, 'red-text');
+    isOnline = false;
 }
