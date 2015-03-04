@@ -1,12 +1,12 @@
-document.addEventListener("deviceReady", init, false);
+document.addEventListener("deviceready", init, false);
 document.addEventListener("offline", offlineHandler, false);
 document.addEventListener("online", onlineHandler, false);
+document.addEventListener("backbutton", onBackKeyDown, false);
 
 var isOnline;
 
 function init() {
     routing();
-    document.addEventListener("backbutton", onBackKeyDown, false);
 }
 
 
