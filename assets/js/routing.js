@@ -190,5 +190,5 @@ function command(e) {
 }
 
 function onBackKeyDown(){
-    alert('back button bitch !');
+    $('#render').prepend("<p>Back</p>");
 }
