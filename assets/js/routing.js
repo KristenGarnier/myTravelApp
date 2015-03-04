@@ -6,6 +6,7 @@ function init(){
     routing();
     document.addEventListener("backbutton", onBackKeyDown, false);
     isOffline = 'onLine' in navigator && !navigator.onLine;
+    $('#render').prepend(isOffline);
 }
 
 
