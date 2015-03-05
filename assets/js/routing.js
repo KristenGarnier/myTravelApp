@@ -22,9 +22,12 @@ function routingHandler(e) {
     e.preventDefault;
     var target = $(this).data("url");
     console.log(target);
-    if (target != "users" && target != "read-user" && target != "deleteUser") {
+    if (target != "users" && target != "read-user" && target != "deleteUser" && target != 'agency') {
         $("#render").load("views/" + target + '.html');
         $('.button-collapse').sideNav('hide');
+        if(isOffline){
+            toastOffline();
+        }
     } else {
 
         if (!isOffline) {
@@ -45,7 +48,7 @@ function routingHandler(e) {
                     console.log(data);
                     $('#render').append('<div class="row"> <div class="col s12 m6"> <div class="card blue-grey darken-1"> <div class="card-content white-text"> <span class="card-title">' + donnes.nom + ' ' + donnes.prenom + '</span> <ul><l1>' + donnes.adresse + '</l1><li>' + donnes.CP + '</li><li>' + donnes.ville + '</li></ul> </div> <div class="card-action"> <a data-id="' + donnes.id + '" data-url="read-user" class="read-user" href="#">Conslter le profil</a></div> </div> </div> </div>');
                 });
-            } else {
+            } else if (target == 'deleteUser') {
                 var id = $(this).data('id');
                 var parent = this.parentNode.parentNode;
                 $.getJSON("http://local.dev/Api/users/?action=delete&id=" + id, function (data) {
@@ -56,6 +59,12 @@ function routingHandler(e) {
                         parent.className = 'hiddendiv';
                     }
                 });
+            }
+            else {
+                $('#render').empty();
+                var height = $(window).height()
+                $('#render').append('<h5 class="center-align">Retouvez nos agences près de vous : </h5> <div id="map" style="height: 700px;"></div>');
+                initialize();
             }
         } else {
             $('#render').empty();
@@ -187,11 +196,15 @@ function onBackKeyDown() {
 }
 
 function onlineHandler() {
-    isOffline = true;
+    isOffline = false;
 }
 
 function offlineHandler() {
     toast('Attention, vous êtes actuellement hors ligne', 4000, 'red-text');
-    $('nav ul:gt(2)').hide();
-    isOffline = false;
+    $('nav li:gt(2)').hide();
+    isOffline = true;
+}
+
+function toastOffline(){
+    toast('Attention, vous êtes actuellement hors ligne',3000,'red-text');
 }
