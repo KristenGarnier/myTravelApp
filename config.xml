@@ -18,6 +18,7 @@
         Hardeep Shoker
     </author>
     <gap:splash src="splash.png" gap:platform="android" />
+    <gap:plugin name="org.apache.cordova.network-information" version="0.2.12" />
     <icon src="icon.png" />
 
 </widget>
