@@ -21,4 +21,9 @@
     <gap:plugin name="org.apache.cordova.network-information" version="0.2.12" />
     <icon src="icon.png" />
 
+    <access origin="*://*.googleapis.com/*" />
+    <access origin="*://*.gstatic.com/*" />
+    <access origin="*://*.google.com/*" />
+    <access origin="*://*.googleusercontent.com/*" />
+
 </widget>

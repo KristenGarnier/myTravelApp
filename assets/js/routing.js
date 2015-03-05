@@ -1,4 +1,3 @@
-
 var isOffline;
 $(document).ready(function(){
     document.addEventListener("deviceready", routing, false);
@@ -195,7 +194,7 @@ function onBackKeyDown() {
 
 function onlineHandler() {
     isOffline = false;
-    $('nav li:gt(2)').show();
+    $('nav li:gt(1)').show();
 }
 
 function offlineHandler() {
