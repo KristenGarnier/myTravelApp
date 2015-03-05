@@ -95,8 +95,8 @@
       <file leaf-file-name="config.xml" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/config.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.4589372" vertical-offset="628" max-vertical-offset="1456">
-              <caret line="36" column="61" selection-start-line="36" selection-start-column="61" selection-end-line="36" selection-end-column="61" />
+            <state vertical-scroll-proportion="0.23671497" vertical-offset="0" max-vertical-offset="828">
+              <caret line="7" column="21" selection-start-line="7" selection-start-column="21" selection-end-line="7" selection-end-column="21" />
               <folding />
             </state>
           </provider>
@@ -408,7 +408,13 @@
       <option name="project" value="LOCAL" />
       <updated>1425589816520</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL-00022" summary="new changes">
+      <created>1425590485305</created>
+      <option name="number" value="00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1425590485305</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -877,8 +883,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/config.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.4589372" vertical-offset="628" max-vertical-offset="1456">
-          <caret line="36" column="61" selection-start-line="36" selection-start-column="61" selection-end-line="36" selection-end-column="61" />
+        <state vertical-scroll-proportion="0.23671497" vertical-offset="0" max-vertical-offset="828">
+          <caret line="7" column="21" selection-start-line="7" selection-start-column="21" selection-end-line="7" selection-end-column="21" />
           <folding />
         </state>
       </provider>
