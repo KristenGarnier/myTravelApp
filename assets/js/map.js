@@ -40,9 +40,9 @@ function handleLocation(lat, long) {
 // To add the marker to the map, call setMap();
     currentPos.setMap(map);
 
-    var infowindow = new google.maps.InfoWindow();
+    //var infowindow = new google.maps.InfoWindow();
 
-    var marker, i;
+    /*var marker, i;
     $.getJSON("http://local.dev/Api/agency/?action=all", function (data) {
         for (i = 0; i < data.length; i++) {
             marker = new google.maps.Marker({
@@ -58,7 +58,7 @@ function handleLocation(lat, long) {
             })(marker, i));
         }
 
-    });
+    });*/
 
 }
 
