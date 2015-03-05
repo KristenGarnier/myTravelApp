@@ -1,16 +1,14 @@
-document.addEventListener("deviceready", init, false);
-document.addEventListener("offline", offlineHandler, false);
-document.addEventListener("online", onlineHandler, false);
-document.addEventListener("backbutton", onBackKeyDown, false);
-//$(document).ready(init);
+
 var isOffline;
-
-function init() {
-    routing();
-}
-
+$(document).ready(function(){
+    document.addEventListener("deviceready", routing, false);
+    document.addEventListener("offline", offlineHandler, false);
+    document.addEventListener("online", onlineHandler, false);
+    document.addEventListener("backbutton", onBackKeyDown, false);
+});
 
 function routing() {
+    console.log('test');
     $('#render').load('views/home.html');
     $(document).on("click", "a", routingHandler);
     $(document).on("click", "#ajoutUtilisateur", inscriptionHandler);
@@ -197,11 +195,12 @@ function onBackKeyDown() {
 
 function onlineHandler() {
     isOffline = false;
+    $('nav li:gt(2)').show();
 }
 
 function offlineHandler() {
     toast('Attention, vous êtes actuellement hors ligne', 4000, 'red-text');
-    $('nav li:gt(2)').hide();
+    $('nav li:gt(1)').hide();
     isOffline = true;
 }
 
