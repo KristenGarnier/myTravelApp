@@ -2,7 +2,7 @@ document.addEventListener("deviceready", init, false);
 document.addEventListener("offline", offlineHandler, false);
 document.addEventListener("online", onlineHandler, false);
 document.addEventListener("backbutton", onBackKeyDown, false);
-$(document).ready(init);
+//$(document).ready(init);
 var isOffline;
 
 function init() {
@@ -192,7 +192,7 @@ function command(e) {
 }
 
 function onBackKeyDown() {
-    $('#render').prepend("<p>Back</p>");
+    toast('backbutton Hell yearh');
 }
 
 function onlineHandler() {
