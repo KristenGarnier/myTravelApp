@@ -30,7 +30,7 @@ function routingHandler(e) {
         if (!isOffline) {
             if (target == 'users') {
                 navigator.geolocation.getCurrentPosition(locInfo, error);
-                $.getJSON("http://local.dev/Api/users/?action=all", function (data) {
+                $.getJSON("http://apiapp.mmi-lepuy.fr/users/?action=all", function (data) {
                     $('#render').empty();
                     $.each(data, function (id, donnes) {
                         $('#render').append('<div class="row"> <div class="col s12 m6"> <div class="card blue-grey darken-1"> <div class="card-content white-text"> <span class="card-title">' + donnes.nom + ' ' + donnes.prenom + '</span> <ul><l1>' + donnes.adresse + '</l1><li>' + donnes.CP + '</li><li>' + donnes.ville + '</li></ul> </div> <div class="card-action"> <a data-id="' + donnes.id + '" data-url="read-user" class="read-user" href="#">Conslter le profil</a><a data-id="' + donnes.id + '" data-url="modifyUser" class="read-user" href="#"><i class="mdi-image-edit"></i></a><a data-id="' + donnes.id + '" data-url="deleteUser" class="read-user" href"#"><i class="mdi-action-delete"></i></a></div> </div> </div> </div>');
@@ -39,7 +39,7 @@ function routingHandler(e) {
 
             } else if (target == "read-user") {
                 var id = $(this).data('id');
-                $.getJSON("http://local.dev/Api/users/?action=read&id=" + id, function (data) {
+                $.getJSON("http://apiapp.mmi-lepuy.fr/users/?action=read&id=" + id, function (data) {
                     var donnes = data[0];
                     $('#render').empty();
                     console.log(data);
@@ -48,7 +48,7 @@ function routingHandler(e) {
             } else if (target == 'deleteUser') {
                 var id = $(this).data('id');
                 var parent = this.parentNode.parentNode;
-                $.getJSON("http://local.dev/Api/users/?action=delete&id=" + id, function (data) {
+                $.getJSON("http://apiapp.mmi-lepuy.fr/users/?action=delete&id=" + id, function (data) {
                     if (data == false) {
                         toast('L\'utilisateur n\'as pas pu être suprimmé', 4000, 'red-text');
                     } else {
@@ -92,7 +92,7 @@ function inscriptionHandler(e) {
     if (error != true) {
         console.log('test');
         $.ajax({
-            url: "http://local.dev/Api/users/",
+            url: "http://apiapp.mmi-lepuy.fr/users/",
             type: "GET",
             data: {
                 action: 'create',
@@ -159,7 +159,7 @@ function modifyHandler(e) {
     if (error != true) {
         console.log(data);
         $.ajax({
-            url: "http://local.dev/Api/users/",
+            url: "http://apiapp.mmi-lepuy.fr/users/",
             type: "GET",
             data: data,
             cache: false,

@@ -3,7 +3,6 @@ function initialize() {
         handleLocation(position.coords.latitude, position.coords.longitude);
     });
 }
-var markers = [];
 google.maps.event.addDomListener(window, 'load', initialize);
 
 function locInfo(pos) {
@@ -40,10 +39,12 @@ function handleLocation(lat, long) {
 // To add the marker to the map, call setMap();
     currentPos.setMap(map);
 
-    //var infowindow = new google.maps.InfoWindow();
+    var infowindow = new google.maps.InfoWindow();
 
-    /*var marker, i;
-    $.getJSON("http://local.dev/Api/agency/?action=all", function (data) {
+    var marker, i;
+
+    $.getJSON("http://apiapp.mmi-lepuy.fr/agency/?action=all", function (data) {
+        console.log(data);
         for (i = 0; i < data.length; i++) {
             marker = new google.maps.Marker({
                 position: new google.maps.LatLng(data[i][6], data[i][7]),
@@ -57,8 +58,7 @@ function handleLocation(lat, long) {
                 }
             })(marker, i));
         }
-
-    });*/
+    });
 
 }
 
